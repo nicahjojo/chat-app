@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat Application</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <div class="auth-screen" id="authScreen">
+      <div class="auth-card">
+        <div class="auth-brand">
+          <span>Chat App</span>
+          <p>Secure chat with login and signup support.</p>
+        </div>
+
+        <div class="auth-toggle">
+          <button id="loginTab" class="active">Login</button>
+          <button id="signupTab">Sign Up</button>
+        </div>
+
+        <div class="auth-form">
+          <div class="form-group">
+            <label for="emailInput">Email</label>
+            <input id="emailInput" type="email" placeholder="you@example.com" />
+          </div>
+
+          <div class="form-group auth-username-group hidden">
+            <label for="usernameInput">Username</label>
+            <input id="usernameInput" placeholder="Choose a username" />
+          </div>
+
+          <div class="form-group">
+            <label for="passwordInput">Password</label>
+            <input id="passwordInput" type="password" placeholder="Enter your password" />
+          </div>
+
+          <div class="form-actions">
+            <button id="authSubmitBtn" class="primary-btn">Login</button>
+          </div>
+
+          <div class="auth-note">
+            <span id="authSwitchText">New here? <button id="switchToSignup" class="link-btn">Create an account</button></span>
+          </div>
+
+          <div id="authError" class="auth-error"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-shell hidden" id="chatShell">
+      <aside class="panel left-panel">
+        <div class="panel-header">
+          <div class="brand">Chat App</div>
+          <div class="user-panel hidden" id="userPanel">
+            <div id="userInfo" class="user-info"></div>
+            <button id="logoutBtn" class="secondary-btn">Logout</button>
+          </div>
+        </div>
+
+        <div class="search-box">
+          <input id="searchInput" placeholder="Search chats..." />
+        </div>
+
+        <div class="section-title">Chats</div>
+        <ul id="roomList" class="chat-list"></ul>
+      </aside>
+
+      <main class="chat-main">
+        <header class="chat-header">
+          <div>
+            <div class="room-title" id="roomName">Design chat</div>
+            <div id="typingIndicator" class="room-subtitle"></div>
+          </div>
+          <div class="chat-actions">
+            <button class="icon-btn">🔍</button>
+            <button class="icon-btn">📞</button>
+            <button class="icon-btn">⋯</button>
+          </div>
+        </header>
+
+        <section id="messages" class="messages"></section>
+
+        <footer class="message-input">
+          <input id="messageInput" placeholder="Write a message..." disabled />
+          <button id="sendBtn" disabled>Send</button>
+        </footer>
+      </main>
+
+      <aside class="panel right-panel">
+        <div class="panel-card panel-info">
+          <div class="panel-title">Group Info</div>
+          <p class="panel-subtitle">Design chat</p>
+          <div class="panel-metrics">
+            <div><strong>28</strong><span>Members</span></div>
+            <div><strong>8</strong><span>Active</span></div>
+          </div>
+          <div class="info-grid">
+            <div class="info-box">Design files</div>
+            <div class="info-box">Project notes</div>
+            <div class="info-box">Team calls</div>
+          </div>
+        </div>
+
+        <div class="panel-card panel-members">
+          <div class="panel-title">Members</div>
+          <ul id="onlineList" class="member-list"></ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
